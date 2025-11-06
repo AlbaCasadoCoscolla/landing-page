@@ -1,0 +1,202 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import HeroKeyBackground from "@/assets/hero-key-background.webp"
+import PlayButtonIcon from "@/assets/play-button.svg"
+import Trailer from "@assets/trailer.mp4"
+
+import Render1 from "@/assets/render1.webp"
+import Render2 from "@/assets/render2.webp"
+import Render3 from "@/assets/render3.webp"
+
+// Fotos de equipo (puedes cambiarlas luego)
+import Member1 from "@/assets/member1.webp"
+import Member2 from "@/assets/member2.webp"
+import Member3 from "@/assets/member3.webp"
+import Member4 from "@/assets/member4.webp"
+---
+
+<Layout>
+  <!-- HERO con máscara -->
+  <div id="logo-mask" class="fixed top-0 w-full h-screen z-10">
+    <section>
+      <picture
+        id="hero-key"
+        class="h-screen scale-125 block overflow-hidden fixed inset-0"
+      >
+        <img
+          id="hero-key-background"
+          src={HeroKeyBackground.src}
+          class="w-full h-full object-cover"
+        />
+      </picture>
+    </section>
+  </div>
+
+  <!-- Contenido del hero (botón + footer) -->
+  <div
+    class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full z-20"
+  >
+    <a href="{Trailer}">
+      <button class="absolute inset-0 m-auto cursor-pointer inline-block">
+        <PlayButtonIcon
+          id="hero-play-button"
+          class="text-white m-auto size-32 mt-10 backdrop-blur-3xl rounded-full hover:scale-110 transition-transform duration-500"
+        />
+      </button>
+    </a>
+
+    <footer id="hero-footer" class="absolute bottom-8 m-auto text-white text-lg tracking-widest">
+      PRÓXIMAMENTE
+    </footer>
+  </div>
+
+  <main class="relative z-0">
+    <!-- Espaciador -->
+    <div class="h-[170vh]"></div>
+
+    <!-- SECCIÓN MEMÒRIES -->
+    <section
+      id="memories-section"
+      class="relative flex flex-col md:flex-row items-center justify-between gap-12 w-full min-h-screen px-20 py-40 opacity-0"
+    >
+      <div class="md:w-1/2 text-white text-lg leading-relaxed space-y-6">
+        <p>
+          <strong>Memòries en Cendra</strong> es una experiencia inmersiva de Realidad Virtual
+          que invita a los usuarios a vivir el proceso de creación y celebración de las Fallas de Valencia.
+        </p>
+        <p>
+          El concepto central de la experiencia gira en torno al propio nombre que, con la figura de
+          <strong>Cendra</strong>, el espíritu guía del juego, y junto a otros personajes que representan
+          figuras de la cultura valenciana, guían al jugador a través de las diferentes misiones.
+        </p>
+      </div>
+
+      <div id="collage" class="md:w-1/2 grid grid-cols-2 gap-4 place-items-center">
+        <img src={Render1.src} alt="Render 1" class="w-full h-auto rounded-lg shadow-lg" />
+        <img src={Render2.src} alt="Render 2" class="w-full h-auto rounded-lg shadow-lg" />
+        <img src={Render3.src} alt="Render 3" class="h-auto rounded-lg shadow-lg col-span-2 w-3/4" />
+      </div>
+    </section>
+
+    <!-- SECCIÓN EQUIPO -->
+    <section
+      id="team-section"
+      class="relative flex flex-col items-center justify-center text-center w-full min-h-screen px-20 py-40 opacity-0"
+    >
+      <h2 class="text-4xl font-bold mb-8 text-white tracking-wider">EQUIPO</h2>
+      <p class="text-white max-w-3xl mb-16 text-lg leading-relaxed">
+        El equipo detrás de Memòries en Cendra es multidisciplinar centrado en la creación de experiencias narrativas y visuales en Realidad Virtual, que aúnan tradición y tecnología con el fin de acercar la cultura a las nuevas generaciones.
+
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 place-items-center">
+        <div class="flex flex-col items-center">
+          <img src={Member1.src} alt="Miembro 1" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Nombre 1</p>
+          <p class="text-gray-300 text-sm">Rol</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src={Member2.src} alt="Miembro 2" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Nombre 2</p>
+          <p class="text-gray-300 text-sm">Rol</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src={Member3.src} alt="Miembro 3" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Nombre 3</p>
+          <p class="text-gray-300 text-sm">Rol</p>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src={Member4.src} alt="Miembro 4" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Nombre 4</p>
+          <p class="text-gray-300 text-sm">Rol</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  #logo-mask {
+    background: white;
+    mask-image: url("/logo-stack.svg");
+    mask-position: center 18%;
+    mask-repeat: no-repeat;
+    mask-size: 9999vh;
+  }
+
+  body {
+    background: black;
+    color: white;
+    overflow-x: hidden;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap"
+  import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  // ANIMACIÓN HERO
+  const tl = gsap.timeline({
+    ease: "power2.out",
+    scrollTrigger: { scrub: 1 },
+  })
+
+  tl.to("#hero-key", { duration: 1, scale: 1 })
+    .to("#hero-footer", { opacity: 0 }, "<")
+    .to("#hero-play-button", { opacity: 0 }, "<")
+    .to("#logo-mask", { maskSize: "clamp(100vh, 50%, 110vh)" }, 0.15)
+    .to("#hero-key", { opacity: 0, duration: 0.2 }, 0.4)
+
+  // FADE IN / OUT MEMORIES
+  gsap.fromTo(
+    "#memories-section",
+    { opacity: 0, y: 100 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#memories-section",
+        start: "top 65%",
+        end: "bottom 40%",
+        toggleActions: "play reverse play reverse",
+      },
+    }
+  )
+
+  // FADE COLLAGE al salir (mantengo el tuyo)
+  gsap.fromTo(
+    "#collage",
+    { opacity: 1 },
+    {
+      opacity: 0,
+      scrollTrigger: {
+        trigger: "#memories-section",
+        start: "bottom 70%",
+        end: "bottom top",
+        scrub: true,
+      },
+    }
+  )
+
+  // FADE IN / OUT EQUIPO
+  gsap.fromTo(
+    "#team-section",
+    { opacity: 0, y: 100 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#team-section",
+        start: "top 70%",
+        end: "bottom 40%",
+        toggleActions: "play reverse play reverse",
+      },
+    }
+  )
+</script>

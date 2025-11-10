@@ -2,21 +2,23 @@
 import Layout from "@/layouts/Layout.astro"
 import HeroKeyBackground from "@/assets/hero-key-background.webp"
 import PlayButtonIcon from "@/assets/play-button.svg"
-import Trailer from "@assets/trailer.mp4"
 
 import Render1 from "@/assets/render1.webp"
 import Render2 from "@/assets/render2.webp"
 import Render3 from "@/assets/render3.webp"
 
-// Fotos de equipo (puedes cambiarlas luego)
 import Member1 from "@/assets/member1.webp"
 import Member2 from "@/assets/member2.webp"
 import Member3 from "@/assets/member3.webp"
 import Member4 from "@/assets/member4.webp"
+
+import Logo1 from "@/assets/logo1.webp"
+import Logo2 from "@/assets/logo2.webp"
+import Logo3 from "@/assets/logo3.webp"
 ---
 
 <Layout>
-  <!-- HERO con máscara -->
+
   <div id="logo-mask" class="fixed top-0 w-full h-screen z-10">
     <section>
       <picture
@@ -32,34 +34,48 @@ import Member4 from "@/assets/member4.webp"
     </section>
   </div>
 
-  <!-- Contenido del hero (botón + footer) -->
   <div
     class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full z-20"
   >
-    <a href="{Trailer}">
-      <button class="absolute inset-0 m-auto cursor-pointer inline-block">
-        <PlayButtonIcon
-          id="hero-play-button"
-          class="text-white m-auto size-32 mt-10 backdrop-blur-3xl rounded-full hover:scale-110 transition-transform duration-500"
-        />
-      </button>
-    </a>
+    <button
+      id="play-trailer-btn"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer inline-block"
+    >
+      <PlayButtonIcon
+        id="hero-play-button"
+        class="text-white size-32 backdrop-blur-3xl rounded-full hover:scale-110 transition-transform duration-500"
+      />
+    </button>
 
-    <footer id="hero-footer" class="absolute bottom-8 m-auto text-white text-lg tracking-widest">
+    <section
+      id="hero-final"
+      class="absolute bottom-8 m-auto text-white text-lg tracking-widest"
+    >
       PRÓXIMAMENTE
-    </footer>
+    </section>
+  </div>
+
+  <div
+    id="trailer-modal"
+    class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50"
+  >
+    <video
+      src="/trailer.mp4"
+      controls
+      class="max-w-4xl w-full rounded-2xl shadow-xl"
+    ></video>
   </div>
 
   <main class="relative z-0">
-    <!-- Espaciador -->
-    <div class="h-[170vh]"></div>
+    <!-- espacio inicial extra para que el timeline tenga recorrido -->
+     <div class="h-[200vh]"></div> <!-- Aumenté un poco el espacio inicial -->
 
-    <!-- SECCIÓN MEMÒRIES -->
     <section
       id="memories-section"
-      class="relative flex flex-col md:flex-row items-center justify-between gap-12 w-full min-h-screen px-20 py-40 opacity-0"
+      class="relative flex flex-col md:flex-row items-center justify-between gap-12 w-full px-20 md:px-32 py-32 md:py-24 opacity-0"
     >
       <div class="md:w-1/2 text-white text-lg leading-relaxed space-y-6">
+
         <p>
           <strong>Memòries en Cendra</strong> es una experiencia inmersiva de Realidad Virtual
           que invita a los usuarios a vivir el proceso de creación y celebración de las Fallas de Valencia.
@@ -77,51 +93,113 @@ import Member4 from "@/assets/member4.webp"
         <img src={Render3.src} alt="Render 3" class="h-auto rounded-lg shadow-lg col-span-2 w-3/4" />
       </div>
     </section>
-
-    <!-- SECCIÓN EQUIPO -->
+<div class="h-[40vh] md:h-[50vh]"></div>
     <section
       id="team-section"
-      class="relative flex flex-col items-center justify-center text-center w-full min-h-screen px-20 py-40 opacity-0"
+      class="relative flex flex-col items-center justify-center text-center w-full px-20 md:px-32 py-32 md:py-24 opacity-0"
     >
-      <h2 class="text-4xl font-bold mb-8 text-white tracking-wider">EQUIPO</h2>
+      <!-- <h2 class="text-4xl font-bold mb-8 text-white tracking-wider">EQUIPO</h2> -->
       <p class="text-white max-w-3xl mb-16 text-lg leading-relaxed">
         El equipo detrás de Memòries en Cendra es multidisciplinar centrado en la creación de experiencias narrativas y visuales en Realidad Virtual, que aúnan tradición y tecnología con el fin de acercar la cultura a las nuevas generaciones.
-
       </p>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-10 place-items-center">
         <div class="flex flex-col items-center">
-          <img src={Member1.src} alt="Miembro 1" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
-          <p class="font-bold text-white">Nombre 1</p>
-          <p class="text-gray-300 text-sm">Rol</p>
+          <img src={Member1.src} alt="Miembro 1" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">María Moreno Martínez</p>
+          <p class="text-gray-300 text-sm">Coordinación general, Responsable de Redes Sociales y Artista 2D/3D</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member2.src} alt="Miembro 2" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
-          <p class="font-bold text-white">Nombre 2</p>
-          <p class="text-gray-300 text-sm">Rol</p>
+          <img src={Member2.src} alt="Miembro 2" class="ww-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Alba Casado Coscollá</p>
+          <p class="text-gray-300 text-sm">Coordinación general, Dirección creativa, Coordinación 3D y Artista 2D/3D</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member3.src} alt="Miembro 3" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
-          <p class="font-bold text-white">Nombre 3</p>
-          <p class="text-gray-300 text-sm">Rol</p>
+          <img src={Member3.src} alt="Miembro 3" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Joel Revert Vila</p>
+          <p class="text-gray-300 text-sm">Coordinación de programación, Programador en Unity y Web</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member4.src} alt="Miembro 4" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4" />
-          <p class="font-bold text-white">Nombre 4</p>
-          <p class="text-gray-300 text-sm">Rol</p>
+          <img src={Member4.src} alt="Miembro 4" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <p class="font-bold text-white">Celia García Monforte</p>
+          <p class="text-gray-300 text-sm">Programación en Unity y Web, Responsable de comunicación externa</p>
         </div>
       </div>
     </section>
+
+    <!-- espacio suave entre el equipo y la cita final -->
+    <div class="h-[40vh] md:h-[50vh]"></div>
+
+    <section
+      class="container-fluid vh-100 flex items-center justify-center relative effect-section"
+      data-effect="zoom-out"
+    >
+      <div class="w-full text-center">
+        <h1 class="animated-text text-5xl md:text-7xl font-bold">
+          VIU LA MÀGIA DE LES FALLES
+        </h1>
+      </div>
+    </section>
+
+    <!-- margen extra antes del footer -->
+    <div class="h-[30vh]"></div>
+
+    <footer id="footer" class="w-full py-16 flex flex-col items-center justify-center gap-8">
+      <section class="contact flex flex-wrap justify-center items-center gap-10 text-white text-lg">
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="mailto:memoriesencendra@gmail.com" aria-label="Enviar correo">
+          <img src={Logo1.src} width="28" height="28" loading="lazy" />
+        </a>
+
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://behance.net/albacasado3" target="_blank" rel="noopener" aria-label="Abrir Behance en una pestaña nueva">
+          <img src={Logo2.src} width="28" height="28" loading="lazy" />
+        </a>
+
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://linkedin.com/in/alba-casado-coscolla-b87419294" target="_blank" rel="noopener" aria-label="Abrir LinkedIn en una pestaña nueva">
+          <img src={Logo3.src} width="28" height="28" loading="lazy" />
+        </a>
+      </section>
+    </footer>
+
   </main>
+
 </Layout>
 
 <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    height: auto;
+    min-height: 100%;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mantengo estas reglas de overflow en los elementos específicos */
+  #logo-mask,
+  #hero-key,
+  #trailer-modal {
+    overflow: hidden;
+  }
+
   #logo-mask {
     background: white;
     mask-image: url("/logo-stack.svg");
     mask-position: center 18%;
     mask-repeat: no-repeat;
     mask-size: 9999vh;
+    pointer-events: none;
+    box-shadow: #000000 0px 0px 20px 10px;
+  }
+
+  /* Evitar que la imagen fija y su contenedor bloqueen scroll/clicks */
+  #hero-key,
+  #hero-key img,
+  #hero-key-background {
+    pointer-events: none;
   }
 
   body {
@@ -129,74 +207,107 @@ import Member4 from "@/assets/member4.webp"
     color: white;
     overflow-x: hidden;
   }
+
+  /* por si la página no tiene suficiente altura, se garantiza mínimo para los triggers */
+  main {
+    min-height: 300vh;
+  }
+
+  #trailer-modal video {
+    max-height: 80vh;
+  }
+
+  #footer {
+    background: transparent;
+    text-align: center;
+  }
+
+  .contact-item span {
+    font-weight: 500;
+  }
+
+  .contact-item img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+  }
 </style>
 
 <script>
-  import { gsap } from "gsap"
-  import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
 
-  gsap.registerPlugin(ScrollTrigger)
+// Timeline principal mapeada al scroll (mantengo tus valores tal cual)
+const tl = gsap.timeline({
+  ease: "power2.out",
+  scrollTrigger: {
+    start: "top top",
+    end: "+=1400",
+    scrub: 1,
+    // markers: true, // descomenta para debug
+  },
+})
 
-  // ANIMACIÓN HERO
-  const tl = gsap.timeline({
-    ease: "power2.out",
-    scrollTrigger: { scrub: 1 },
+// --- HERO / LOGO: mantengo exactamente tus ajustes y duraciones
+tl.to("#hero-key", { duration: 1.2, scale: 1, ease: "power3.out" }, 0)
+  .to("#hero-final", { opacity: 0, duration: 0.6, ease: "power3.out" }, "<")
+  .to("#hero-play-button", { opacity: 0, duration: 0.5, ease: "power2.out" }, "<")
+  .to("#logo-mask", { maskSize: "clamp(60vh, 50%, 60vh)", duration: 1.6, ease: "power3.out" }, 0.15)
+  .to("#hero-key", { opacity: 0, duration: 0.6, ease: "power2.out" }, 0.45)
+
+tl.addLabel("logoPlaced", 0.75)
+
+// --- Mantengo el collage dentro de la timeline principal tal y como lo tenías
+tl.fromTo(
+  "#collage",
+  { opacity: 0, y: 40 },
+  { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+  `logoPlaced+=${0.9 + 0.25}`
+)
+
+// ------------------------------
+// Nueva: animación *idéntica* para varios bloques
+// ------------------------------
+
+// Anotación de tipo para evitar el error "implicitly has an 'any' type"
+function createCenterFade(selector: string) {
+  // cada timeline está ligado al scroll del propio bloque
+  const t = gsap.timeline({
+    scrollTrigger: {
+      // casteo mínimo para satisfacer al tipador TS; GSAP acepta strings
+      trigger: selector as any,
+      start: "top 85%",
+      end: "top 15%",
+      scrub: true,
+      // markers: true, // descomenta para ajustar visualmente
+    },
   })
 
-  tl.to("#hero-key", { duration: 1, scale: 1 })
-    .to("#hero-footer", { opacity: 0 }, "<")
-    .to("#hero-play-button", { opacity: 0 }, "<")
-    .to("#logo-mask", { maskSize: "clamp(100vh, 50%, 110vh)" }, 0.15)
-    .to("#hero-key", { opacity: 0, duration: 0.2 }, 0.4)
+  // estructura del timeline: entrada -> estancia -> salida
+  t.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "none" })
+    .to(selector, { opacity: 1, duration: 0.64, ease: "none" })
+    .to(selector, { opacity: 0, duration: 0.18, ease: "none" })
+}
 
-  // FADE IN / OUT MEMORIES
-  gsap.fromTo(
-    "#memories-section",
-    { opacity: 0, y: 100 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#memories-section",
-        start: "top 65%",
-        end: "bottom 40%",
-        toggleActions: "play reverse play reverse",
-      },
-    }
-  )
+// Aplico la misma animación a los bloques que pediste:
+createCenterFade("#memories-section")
+createCenterFade("#team-section")
+createCenterFade(".effect-section")
+createCenterFade("#footer")
 
-  // FADE COLLAGE al salir (mantengo el tuyo)
-  gsap.fromTo(
-    "#collage",
-    { opacity: 1 },
-    {
-      opacity: 0,
-      scrollTrigger: {
-        trigger: "#memories-section",
-        start: "bottom 70%",
-        end: "bottom top",
-        scrub: true,
-      },
+// --- Play button / modal (sin cambios)
+const playBtn = document.getElementById("play-trailer-btn")
+const trailerModal = document.getElementById("trailer-modal")
+if (playBtn && trailerModal) {
+  playBtn.addEventListener("click", () => {
+    trailerModal.classList.remove("hidden")
+    document.body.style.overflow = "hidden"
+  })
+  trailerModal.addEventListener("click", (e) => {
+    if (e.target === trailerModal) {
+      trailerModal.classList.add("hidden")
+      document.body.style.overflow = ""
     }
-  )
-
-  // FADE IN / OUT EQUIPO
-  gsap.fromTo(
-    "#team-section",
-    { opacity: 0, y: 100 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: "#team-section",
-        start: "top 70%",
-        end: "bottom 40%",
-        toggleActions: "play reverse play reverse",
-      },
-    }
-  )
+  })
+}
 </script>

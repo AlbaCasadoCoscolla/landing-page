@@ -12,13 +12,32 @@ import KeepScrolling from "@/assets/keep-scrolling.svg"
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    
   </head>
   <body>
     <slot />
     <KeepScrolling
-      class="fixed bottom-3 right-0 left-0 mx-auto text-pink-300 drop-shadow-2xl animate-bounce-pulse"
+      id="keep-scrolling-arrow"
+      class="fixed bottom-3 right-0 left-0 mx-auto text-orange-400 drop-shadow-2xl animate-bounce-pulse z-[999] transition-opacity duration-500"
     />
+
+    <script>
+      document.addEventListener("scroll", () => {
+        const arrow = document.getElementById("keep-scrolling-arrow")
+        if (!arrow) return
+
+        // Altura total del documento
+        const scrollTop = window.scrollY
+        const windowHeight = window.innerHeight
+        const documentHeight = document.body.scrollHeight
+
+        // Si el usuario está a menos de 100px del final, oculta la flecha
+        if (scrollTop + windowHeight >= documentHeight - 100) {
+          arrow.style.opacity = "0"
+        } else {
+          arrow.style.opacity = "1"
+        }
+      })
+    </script>
   </body>
 </html>
 
@@ -28,8 +47,7 @@ import KeepScrolling from "@/assets/keep-scrolling.svg"
   @theme {
      --font-sans: "Poppins", system-ui, sans-serif;
      --font-narrow: "Poppins", system-ui, sans-serif;
-
-    --animate-bounce-pulse: bounce-pulse 2s ease-in-out infinite;
+     --animate-bounce-pulse: bounce-pulse 2s ease-in-out infinite;
   }
 
   @keyframes bounce-pulse {
@@ -61,37 +79,5 @@ import KeepScrolling from "@/assets/keep-scrolling.svg"
     color: white;
     margin: 0;
     width: 100%;
-  }
-
-  @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: GTA;
-    src: url("/fonts/gta-semibold.woff") format("woff");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: GTANarrow;
-    src: url("/fonts/gta-narrow.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
   }
 </style>

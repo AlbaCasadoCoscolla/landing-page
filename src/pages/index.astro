@@ -15,6 +15,12 @@ import Member4 from "@/assets/member4.webp"
 import Logo1 from "@/assets/logo1.webp"
 import Logo2 from "@/assets/logo2.webp"
 import Logo3 from "@/assets/logo3.webp"
+import Logo4 from "@/assets/logo4.webp"
+
+import Event1 from "@/assets/event1.webp"
+import Event2 from "@/assets/event2.webp"
+import Event3 from "@/assets/event3.webp"
+import Event4 from "@/assets/event4.webp"
 ---
 
 <Layout>
@@ -35,11 +41,11 @@ import Logo3 from "@/assets/logo3.webp"
   </div>
 
   <div
-    class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full z-20"
+    class="fixed flex flex-col items-center justify-between h-screen px-20 py-16 w-full z-20 pointer-events-none"
   >
     <button
       id="play-trailer-btn"
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer inline-block"
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer inline-block pointer-events-auto"
     >
       <PlayButtonIcon
         id="hero-play-button"
@@ -66,101 +72,159 @@ import Logo3 from "@/assets/logo3.webp"
     ></video>
   </div>
 
+  <nav
+    id="site-menu"
+    class="fixed top-8 right-8 z-40 flex items-center gap-4 backdrop-blur-md bg-black/40 rounded-full px-4 py-2"
+    aria-label="Menú principal"
+  >
+    <a href="#memories-section" class="menu-link text-white text-sl px-3 py-2 rounded-full hover:bg-orange-400 hover:text-black transition">Experiencia</a>
+    <a href="#events-section" class="menu-link text-white text-sl px-3 py-2 rounded-full hover:bg-orange-400 hover:text-black transition">Eventos</a>
+    <a href="#team-section" class="menu-link text-white text-sl px-3 py-2 rounded-full hover:bg-orange-400 hover:text-black transition">Sobre nosotros</a>
+    <a href="#footer" class="menu-link text-white text-sl px-3 py-2 rounded-full hover:bg-orange-400 hover:text-black transition">Contacto</a>
+  </nav>
+
   <main class="relative z-0">
-    <!-- espacio inicial extra para que el timeline tenga recorrido -->
-     <div class="h-[200vh]"></div> <!-- Aumenté un poco el espacio inicial -->
+
+     <div class="h-[200vh]"></div>
 
     <section
       id="memories-section"
-      class="relative flex flex-col md:flex-row items-center justify-between gap-12 w-full px-20 md:px-32 py-32 md:py-24 opacity-0"
+      class="relative flex flex-col md:flex-row items-center justify-between gap-12 w-full px-20 md:px-32 py-24 md:py-20 opacity-0"
     >
-      <div class="md:w-1/2 text-white text-lg leading-relaxed space-y-6">
-
+      <div class="md:w-1/2 text-white text-lg leading-relaxed space-y-6 order-1 md:order-1">
         <p>
-          <strong>Memòries en Cendra</strong> es una experiencia inmersiva de Realidad Virtual
-          que invita a los usuarios a vivir el proceso de creación y celebración de las Fallas de Valencia.
+          <strong>Memòries en Cendra</strong> es una experiencia inmersiva de <strong>Realidad Virtual</strong> que invita a los usuarios a vivir el proceso de creación y celebración de las <strong>Fallas de Valencia</strong>. Actualmente se encuentra en <strong>desarrollo</strong> y próximamente estará disponible en museos y eventos culturales.
         </p>
         <p>
-          El concepto central de la experiencia gira en torno al propio nombre que, con la figura de
-          <strong>Cendra</strong>, el espíritu guía del juego, y junto a otros personajes que representan
-          figuras de la cultura valenciana, guían al jugador a través de las diferentes misiones.
+          El concepto central de la experiencia gira en torno al propio nombre que, con la figura de <strong>Cendra</strong>, el espíritu guía del juego, y junto a otros personajes que representan figuras de la cultura valenciana, guían al jugador a través de las diferentes misiones.
         </p>
       </div>
 
-      <div id="collage" class="md:w-1/2 grid grid-cols-2 gap-4 place-items-center">
-        <img src={Render1.src} alt="Render 1" class="w-full h-auto rounded-lg shadow-lg" />
-        <img src={Render2.src} alt="Render 2" class="w-full h-auto rounded-lg shadow-lg" />
-        <img src={Render3.src} alt="Render 3" class="h-auto rounded-lg shadow-lg col-span-2 w-3/4" />
+      <div id="collage" class="md:w-1/2 grid grid-cols-2 gap-4 order-2 md:order-2">
+        <div class="flex flex-col gap-4">
+          <img 
+            src={Render1.src} 
+            alt="Render 1" 
+            class="w-full rounded-lg shadow-lg cursor-pointer"
+          />
+          <img 
+            src={Render2.src} 
+            alt="Render 2" 
+            class="w-full rounded-lg shadow-lg cursor-pointer"
+          />
+        </div>
+
+        <img 
+          src={Render3.src} 
+          alt="Render 3" 
+          class="w-full h-[400px] object-cover object-center rounded-lg shadow-lg cursor-pointer"
+        />
       </div>
     </section>
-<div class="h-[40vh] md:h-[50vh]"></div>
+
+    <div class="h-[20vh] md:h-[30vh]"></div>
+
+    <section
+      id="events-section"
+      class="relative flex flex-col md:flex-row items-start md:items-center justify-between w-full max-w-6xl mx-auto px-8 md:px-16 py-24 opacity-0 scroll-margin-top-menu gap-12"
+    >
+      <div class="md:w-1/2 grid grid-cols-2 gap-4 order-2 md:order-1">
+        <img src={Event1.src} alt="Evento 1" class="w-full h-48 object-cover rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer" />
+        <img src={Event2.src} alt="Evento 2" class="w-full h-48 object-cover rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer" />
+        <img src={Event3.src} alt="Evento 3" class="w-full h-48 object-cover rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer" />
+        <img src={Event4.src} alt="Evento 4" class="w-full h-48 object-cover rounded-lg shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer" />
+      </div>
+
+      <div class="md:w-1/2 text-white text-lg leading-relaxed space-y-6 order-1 md:order-2 md:ml-12">
+        <p>
+          Hemos tenido la oportunidad de participar en diversos <strong>eventos</strong>, donde hemos presentado <strong>Memòries en Cendra</strong>. Cada uno de ellos es una nueva aventura y una confirmación de que estamos creando algo verdaderamente especial.
+        </p>
+      </div>
+    </section>
+
+    <div class="h-[20vh] md:h-[30vh]"></div>
+
     <section
       id="team-section"
-      class="relative flex flex-col items-center justify-center text-center w-full px-20 md:px-32 py-32 md:py-24 opacity-0"
+      class="relative flex flex-col items-center justify-center w-full max-w-6xl mx-auto px-8 md:px-16 py-32 md:py-24 opacity-0"
     >
-      <!-- <h2 class="text-4xl font-bold mb-8 text-white tracking-wider">EQUIPO</h2> -->
-      <p class="text-white max-w-3xl mb-16 text-lg leading-relaxed">
+      <p class="text-white max-w-3xl mb-16 text-lg leading-relaxed text-left">
         El equipo detrás de Memòries en Cendra es multidisciplinar centrado en la creación de experiencias narrativas y visuales en Realidad Virtual, que aúnan tradición y tecnología con el fin de acercar la cultura a las nuevas generaciones.
       </p>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 place-items-center">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5 place-items-center">
         <div class="flex flex-col items-center">
           <img src={Member1.src} alt="Miembro 1" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
           <p class="font-bold text-white">María Moreno Martínez</p>
-          <p class="text-gray-300 text-sm">Coordinación general, Responsable de Redes Sociales y Artista 2D/3D</p>
+          <p class="text-gray-300 text-sm text-center">Coordinación general, Redes Sociales y Artista 2D/3D</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member2.src} alt="Miembro 2" class="ww-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <img src={Member2.src} alt="Miembro 2" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
           <p class="font-bold text-white">Alba Casado Coscollá</p>
-          <p class="text-gray-300 text-sm">Coordinación general, Dirección creativa, Coordinación 3D y Artista 2D/3D</p>
+          <p class="text-gray-300 text-sm text-center">Dirección creativa, Coordinación general y 3D y Artista 2D/3D</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member3.src} alt="Miembro 3" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <img src={Member4.src} alt="Miembro 3" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
           <p class="font-bold text-white">Joel Revert Vila</p>
-          <p class="text-gray-300 text-sm">Coordinación de programación, Programador en Unity y Web</p>
+          <p class="text-gray-300 text-sm text-center">Coordinación de programación, Programador en Unity y Web</p>
         </div>
         <div class="flex flex-col items-center">
-          <img src={Member4.src} alt="Miembro 4" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
+          <img src={Member3.src} alt="Miembro 4" class="w-52 h-52 rounded-full object-cover shadow-lg mb-4" />
           <p class="font-bold text-white">Celia García Monforte</p>
-          <p class="text-gray-300 text-sm">Programación en Unity y Web, Responsable de comunicación externa</p>
+          <p class="text-gray-300 text-sm text-center">Programadora en Unity y Web, Comunicación externa</p>
         </div>
       </div>
     </section>
 
-    <!-- espacio suave entre el equipo y la cita final -->
-    <div class="h-[40vh] md:h-[50vh]"></div>
+    <div class="h-[25vh]"></div>
 
-    <section
-      class="container-fluid vh-100 flex items-center justify-center relative effect-section"
-      data-effect="zoom-out"
-    >
-      <div class="w-full text-center">
-        <h1 class="animated-text text-5xl md:text-7xl font-bold">
-          VIU LA MÀGIA DE LES FALLES
-        </h1>
+    <footer id="footer" class="w-full py-16 flex flex-col items-center justify-center gap-6">
+      <div class="text-white text-center">
+        <p class="font-bold text-6xl md:text-8xl text-center">PRÓXIMAMENTE EN 2026</p>
+        <div class="h-[25vh]"></div>
+        <p class="text-gray-300 mt-2">¡Síguenos para mantenerte al día!</p>
       </div>
-    </section>
 
-    <!-- margen extra antes del footer -->
-    <div class="h-[30vh]"></div>
-
-    <footer id="footer" class="w-full py-16 flex flex-col items-center justify-center gap-8">
       <section class="contact flex flex-wrap justify-center items-center gap-10 text-white text-lg">
         <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="mailto:memoriesencendra@gmail.com" aria-label="Enviar correo">
-          <img src={Logo1.src} width="28" height="28" loading="lazy" />
+          <img src={Logo1.src} width="40" height="40" loading="lazy" />
         </a>
-
-        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://behance.net/albacasado3" target="_blank" rel="noopener" aria-label="Abrir Behance en una pestaña nueva">
-          <img src={Logo2.src} width="28" height="28" loading="lazy" />
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://www.linkedin.com/company/memòries-en-cendra/?viewAsMember=true" target="_blank" rel="noopener" aria-label="Abrir Behance">
+          <img src={Logo2.src} width="40" height="40" loading="lazy" />
         </a>
-
-        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://linkedin.com/in/alba-casado-coscolla-b87419294" target="_blank" rel="noopener" aria-label="Abrir LinkedIn en una pestaña nueva">
-          <img src={Logo3.src} width="28" height="28" loading="lazy" />
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://www.instagram.com/memoriesencendrarv/" target="_blank" rel="noopener" aria-label="Abrir LinkedIn">
+          <img src={Logo4.src} width="40" height="40" loading="lazy" />
+        </a>
+        <a class="contact-item flex items-center gap-3 hover:scale-110 transition-transform" href="https://www.tiktok.com/@memoriesencendrarv" target="_blank" rel="noopener" aria-label="Abrir LinkedIn">
+          <img src={Logo3.src} width="40" height="40" loading="lazy" />
         </a>
       </section>
     </footer>
-
   </main>
+
+  <button
+    id="burger-btn"
+    class="fixed top-2 right-3 z-50 p-3 rounded-lg border-white/20 md:hidden">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+    </svg> 
+  </button>
+<nav class="fixed top-0 left-0 w-full h-35 bg-black flex items-center justify-between px-4 z-5 shadow-md shadow-black/50  md:hidden"></nav>
+
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-10 text-3xl text-white font-bold opacity-0 pointer-events-none transition-all duration-500 md:hidden z-[60]"
+  >
+    <button id="close-menu" class="absolute top-1 right-2 text-4xl p-4">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
+    </svg></button>
+
+    <a href="#memories-section" class="mobile-link">Experiencia</a>
+    <a href="#events-section" class="mobile-link">Eventos</a>
+    <a href="#team-section" class="mobile-link">Sobre nosotros</a>
+    <a href="#footer" class="mobile-link">Contacto</a>
+  </div>
 
 </Layout>
 
@@ -172,13 +236,13 @@ import Logo3 from "@/assets/logo3.webp"
     scrollbar-width: none;
     height: auto;
     min-height: 100%;
+    scroll-behavior: smooth;
   }
 
   body::-webkit-scrollbar {
     display: none;
   }
 
-  /* Mantengo estas reglas de overflow en los elementos específicos */
   #logo-mask,
   #hero-key,
   #trailer-modal {
@@ -195,7 +259,6 @@ import Logo3 from "@/assets/logo3.webp"
     box-shadow: #000000 0px 0px 20px 10px;
   }
 
-  /* Evitar que la imagen fija y su contenedor bloqueen scroll/clicks */
   #hero-key,
   #hero-key img,
   #hero-key-background {
@@ -208,9 +271,8 @@ import Logo3 from "@/assets/logo3.webp"
     overflow-x: hidden;
   }
 
-  /* por si la página no tiene suficiente altura, se garantiza mínimo para los triggers */
   main {
-    min-height: 300vh;
+    min-height: 320vh;
   }
 
   #trailer-modal video {
@@ -222,80 +284,259 @@ import Logo3 from "@/assets/logo3.webp"
     text-align: center;
   }
 
-  .contact-item span {
-    font-weight: 500;
+  .contact-item img {
+    filter: brightness(0) invert(1); 
+    transition: all 0.4s ease;
+    transform: translateY(0) scale(1);
   }
 
-  .contact-item img {
-    filter: brightness(0) invert(1);
-    transition: filter 0.3s ease;
+  .contact-item:hover img {
+    filter: none; 
+    transform: translateY(-3px) scale(1.1); 
   }
+
+  #site-menu {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    margin-top: 4vh;
+    border: 1px solid rgba(255, 251, 245, 0.232);
+  }
+
+  #site-menu .menu-link {
+    white-space: nowrap;
+  }
+
+  #memories-section,
+  #team-section,
+  #footer {
+    scroll-margin-top: 260px; 
+  }
+
+  .scroll-margin-top-menu {
+    scroll-margin-top: 260px; 
+  }
+
+  @keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+
+  .animate-slide {
+    animation: slide 30s linear infinite; 
+    width: fit-content; 
+  }
+
+  .animate-slide img {
+    flex-shrink: 0;
+  }
+
+  #collage img {
+    width: 100%;
+    break-inside: avoid;
+  }
+
+  /* LINKS MÓVIL */
+  .mobile-link {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .mobile-link:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  /* ANIMACIÓN BOTÓN HAMBURGUESA */
+  #burger-btn.active div:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #burger-btn.active div:nth-child(2) {
+    opacity: 0;
+  }
+  #burger-btn.active div:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+/* =========================================
+   AJUSTES MÓVIL (ESTO ES LO IMPORTANTE)
+   ========================================= */
+@media (max-width: 768px) {
+  #hero-key {
+    transform: none !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+  }
+  
+  #hero-key-background {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Ocultar el menú de escritorio */
+  #site-menu {
+    display: none !important;
+  }
+
+  main {
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  section {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+
+  /* 1. TEXTOS A LA IZQUIERDA Y VISIBLES (SIN ANIMACIÓN DE ENTRADA) */
+  #memories-section,
+  #events-section,
+  #team-section {
+    flex-direction: column !important;
+    text-align: left !important; 
+    align-items: flex-start !important; 
+    opacity: 1 !important; /* Importante para que se vean sin hacer scroll */
+    transform: none !important;
+  }
+
+  p, h1, h2, h3 {
+    text-align: left !important;
+  }
+
+  #footer p {
+    font-size: 1.5rem !important; 
+    text-align: center !important; 
+  }
+
+  /* 2. IMÁGENES AL 100% DE ANCHO (REGLA GENERAL) */
+  #collage {
+    width: 100%;
+    grid-template-columns: 1fr !important; 
+    gap: 1rem;
+  }
+
+  #events-section .grid {
+    grid-template-columns: 1fr !important; 
+    width: 100%;
+  }
+
+  #team-section .grid {
+    grid-template-columns: 1fr !important; 
+    width: 100%;
+    place-items: start !important;
+  }
+
+  img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  /* --- EXCEPCIÓN PARA LOS LOGOS DEL FOOTER (.contact) --- */
+  .contact {
+    flex-direction: row !important; 
+    justify-content: center !important; 
+    align-items: center !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .contact p{
+    size: 1rem;
+  }
+
+  .contact img {
+    width: 40px !important; 
+    height: 40px !important;
+    object-fit: contain !important;
+  }
+  
+  /* Ajuste específico para avatares */
+  #team-section img {
+    width: 150px !important; 
+    height: 150px !important;
+    align-self: center; 
+    margin-bottom: 1rem;
+  }
+  #team-section p {
+    text-align: center !important;
+  }
+  
+  #team-section .flex-col {
+    align-items: center !important; 
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  #memories-section,
+  #events-section,
+  #team-section,
+  #footer { 
+    scroll-margin-top: 6rem !important; 
+  }
+}
 </style>
 
 <script>
 import { gsap } from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+
 gsap.registerPlugin(ScrollTrigger)
 
-// Timeline principal mapeada al scroll (mantengo tus valores tal cual)
+// 1. ANIMACIÓN HERO (GLOBAL)
 const tl = gsap.timeline({
   ease: "power2.out",
   scrollTrigger: {
     start: "top top",
     end: "+=1400",
     scrub: 1,
-    // markers: true, // descomenta para debug
   },
 })
 
-// --- HERO / LOGO: mantengo exactamente tus ajustes y duraciones
 tl.to("#hero-key", { duration: 1.2, scale: 1, ease: "power3.out" }, 0)
   .to("#hero-final", { opacity: 0, duration: 0.6, ease: "power3.out" }, "<")
   .to("#hero-play-button", { opacity: 0, duration: 0.5, ease: "power2.out" }, "<")
-  .to("#logo-mask", { maskSize: "clamp(60vh, 50%, 60vh)", duration: 1.6, ease: "power3.out" }, 0.15)
+  .to("#logo-mask", { maskSize: "clamp(40vh, 30%, 50vh)", marginTop: "-8vh", duration: 1.6, ease: "power3.out" }, 0.15)
   .to("#hero-key", { opacity: 0, duration: 0.6, ease: "power2.out" }, 0.45)
 
 tl.addLabel("logoPlaced", 0.75)
 
-// --- Mantengo el collage dentro de la timeline principal tal y como lo tenías
-tl.fromTo(
-  "#collage",
-  { opacity: 0, y: 40 },
-  { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-  `logoPlaced+=${0.9 + 0.25}`
-)
+// 2. ANIMACIONES DE SECCIONES (SOLO ESCRITORIO)
+let mm = gsap.matchMedia();
 
-// ------------------------------
-// Nueva: animación *idéntica* para varios bloques
-// ------------------------------
+mm.add("(min-width: 769px)", () => {
+  // Solo animamos entrada y fundidos en pantallas grandes
+  
+  tl.fromTo(
+    "#collage",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+    `logoPlaced+=${0.9 + 0.25}`
+  )
 
-// Anotación de tipo para evitar el error "implicitly has an 'any' type"
-function createCenterFade(selector: string) {
-  // cada timeline está ligado al scroll del propio bloque
-  const t = gsap.timeline({
-    scrollTrigger: {
-      // casteo mínimo para satisfacer al tipador TS; GSAP acepta strings
-      trigger: selector as any,
-      start: "top 85%",
-      end: "top 15%",
-      scrub: true,
-      // markers: true, // descomenta para ajustar visualmente
-    },
-  })
+  function createCenterFade(selector: string) {
+    const t = gsap.timeline({
+      scrollTrigger: {
+        trigger: selector,
+        start: "top 85%",
+        end: "top 5%",
+        scrub: true,
+      },
+    })
+    t.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 0.1, ease: "none" })
+      .to(selector, { opacity: 1, duration: 0.64, ease: "none" })
+      .to(selector, { opacity: 0, duration: 0.18, ease: "none" })
+  }
 
-  // estructura del timeline: entrada -> estancia -> salida
-  t.fromTo(selector, { opacity: 0 }, { opacity: 1, duration: 0.18, ease: "none" })
-    .to(selector, { opacity: 1, duration: 0.64, ease: "none" })
-    .to(selector, { opacity: 0, duration: 0.18, ease: "none" })
-}
+  createCenterFade("#memories-section")
+  createCenterFade("#team-section")
+  createCenterFade("#events-section")
+});
 
-// Aplico la misma animación a los bloques que pediste:
-createCenterFade("#memories-section")
-createCenterFade("#team-section")
-createCenterFade(".effect-section")
-createCenterFade("#footer")
-
-// --- Play button / modal (sin cambios)
+// 3. TRAILER MODAL
 const playBtn = document.getElementById("play-trailer-btn")
 const trailerModal = document.getElementById("trailer-modal")
 if (playBtn && trailerModal) {
@@ -309,5 +550,38 @@ if (playBtn && trailerModal) {
       document.body.style.overflow = ""
     }
   })
+}
+
+// 4. MENÚ MÓVIL (Lógica corregida y funcional)
+const burgerBtn = document.getElementById("burger-btn")
+const mobileMenu = document.getElementById("mobile-menu")
+const closeMenu = document.getElementById("close-menu")
+const mobileLinks = document.querySelectorAll(".mobile-link")
+
+// Comprobamos que existan para evitar errores de TypeScript
+if (burgerBtn && mobileMenu && closeMenu) {
+  
+  const openMenu = () => {
+    burgerBtn.classList.add("active") // Animación del icono hamburguesa
+    mobileMenu.style.opacity = "1"    // Muestra overlay
+    mobileMenu.style.pointerEvents = "auto" // Habilita clicks
+    document.body.style.overflow = "hidden" // Bloquea scroll de fondo
+  }
+
+  const closeMobileMenu = () => {
+    burgerBtn.classList.remove("active")
+    mobileMenu.style.opacity = "0"
+    mobileMenu.style.pointerEvents = "none"
+    document.body.style.overflow = "" // Restaura scroll
+  }
+
+  // Eventos
+  burgerBtn.addEventListener("click", openMenu)
+  closeMenu.addEventListener("click", closeMobileMenu)
+
+  // Cerrar al hacer click en cualquier enlace del menú
+  mobileLinks.forEach(link =>
+    link.addEventListener("click", closeMobileMenu)
+  )
 }
 </script>

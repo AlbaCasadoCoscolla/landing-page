@@ -47,10 +47,19 @@ import Event4 from "@/assets/event4.webp"
       id="play-trailer-btn"
       class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer inline-block pointer-events-auto"
     >
+
+  <a 
+    href="https://www.youtube.com/watch?v=Lzyu43-8dig" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    class="text-white text-xl underline"
+  >
+    
+  
       <PlayButtonIcon
         id="hero-play-button"
         class="text-white size-32 backdrop-blur-3xl rounded-full hover:scale-110 transition-transform duration-500"
-      />
+      /></a>
     </button>
 
     <section
@@ -61,16 +70,7 @@ import Event4 from "@/assets/event4.webp"
     </section>
   </div>
 
-  <div
-    id="trailer-modal"
-    class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50"
-  >
-    <video
-      src="/trailer.mp4"
-      controls
-      class="max-w-4xl w-full rounded-2xl shadow-xl"
-    ></video>
-  </div>
+</div>
 
   <nav
     id="site-menu"
